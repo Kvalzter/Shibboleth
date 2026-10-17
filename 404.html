@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Not found – Shibboleth</title>
+  <title>Something went wrong – Shibboleth</title>
   <meta name="robots" content="noindex">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
@@ -17,14 +17,15 @@
 
     * { box-sizing: border-box; }
 
-    html, body { height: 100%; margin: 0; }
+    html, body { min-height: 100%; margin: 0; }
 
     body {
       background: var(--bg);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0 24px;
+      min-height: 100vh;
+      padding: 48px 24px;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -48,6 +49,13 @@
       color: var(--sub);
     }
 
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0 0 2rem;
+    }
+
     a {
       color: var(--sub);
       text-decoration: underline;
@@ -60,9 +68,10 @@
 </head>
 <body>
   <main>
-    <h1>Not found</h1>
+    <img src="/404-picture.webp" width="1280" height="720" alt="Painting of a man in uniform holding up three fingers to another man whose face is blank">
+    <h1>Something went wrong</h1>
     <p>
-      There is no entry for this page. <a href="/">Return to Shibboleth</a>
+      <a href="/">Return home</a>
     </p>
   </main>
 </body>
