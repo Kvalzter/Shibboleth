@@ -28,63 +28,64 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Picture: flush with the bottom-left corner */
+    /* Picture: transparent background, flush with the bottom-left corner */
     .art {
       position: fixed;
       left: 0;
       bottom: 0;
       display: block;
-      width: min(82vw, 128vh, 1773px);
+      width: min(82vw, 112vh, 1773px);
       height: auto;
+      pointer-events: none;
     }
 
     /* Text: top right */
     main {
       position: fixed;
-      top: clamp(28px, 7vh, 80px);
+      top: clamp(28px, 8vh, 88px);
       right: clamp(24px, 6vw, 88px);
-      max-width: min(26rem, calc(100vw - 48px));
-      text-align: right;
+      text-align: left;
     }
 
     h1 {
       margin: 0;
       font-family: Georgia, "Times New Roman", Times, serif;
       font-weight: 700;
-      font-size: clamp(2.25rem, 6vw, 4.25rem);
+      font-size: clamp(2rem, 4.2vw, 3.5rem);
       letter-spacing: -0.01em;
-      line-height: 1.1;
+      line-height: 1.08;
       color: var(--title);
     }
 
-    p {
-      margin: 0.8rem 0 0;
+    .home {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.65em 1.3em;
       font-family: Georgia, "Times New Roman", Times, serif;
-      font-size: clamp(1rem, 3.2vw, 1.15rem);
-      line-height: 1.5;
-      color: var(--sub);
+      font-size: 1rem;
+      line-height: 1;
+      color: var(--title);
+      text-decoration: none;
+      border: 1px solid var(--title);
+      transition: background-color 0.15s, color 0.15s;
     }
 
-    a {
-      color: var(--sub);
-      text-decoration: underline;
-      text-underline-offset: 0.2em;
-      text-decoration-thickness: 1px;
+    .home:hover, .home:focus-visible {
+      background: var(--title);
+      color: var(--bg);
     }
-
-    a:hover, a:focus-visible { color: var(--title); }
 
     /* Narrow or portrait screens: picture spans the full width */
     @media (max-width: 700px), (max-aspect-ratio: 1/1) {
-      .art { width: 100vw; }
+      .art { width: 112vw; }
     }
   </style>
 </head>
 <body>
-  <img class="art" src="/404-picture.webp" width="1773" height="998" alt="Painting of a man in uniform holding up three fingers to another man whose face is blank">
+  <img class="art" src="/404-picture.webp" width="1773" height="1228" alt="Painting of a man in uniform holding up three fingers to another man whose face is blank">
   <main>
-    <h1>Something went wrong</h1>
-    <p><a href="/">Return home</a></p>
+    <h1>Something<br>went wrong</h1>
+    <a class="home" href="/">Return home</a>
   </main>
 </body>
 </html>
