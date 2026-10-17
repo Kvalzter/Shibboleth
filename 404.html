@@ -17,43 +17,52 @@
 
     * { box-sizing: border-box; }
 
-    html, body { min-height: 100%; margin: 0; }
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
 
     body {
       background: var(--bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 48px 24px;
       -webkit-font-smoothing: antialiased;
     }
 
-    main { max-width: 40rem; }
+    /* Picture: flush with the bottom-left corner */
+    .art {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      display: block;
+      width: min(82vw, 128vh, 1773px);
+      height: auto;
+    }
+
+    /* Text: top right */
+    main {
+      position: fixed;
+      top: clamp(28px, 7vh, 80px);
+      right: clamp(24px, 6vw, 88px);
+      max-width: min(26rem, calc(100vw - 48px));
+      text-align: right;
+    }
 
     h1 {
       margin: 0;
       font-family: Georgia, "Times New Roman", Times, serif;
       font-weight: 700;
-      font-size: clamp(2.75rem, 10vw, 5rem);
+      font-size: clamp(2.25rem, 6vw, 4.25rem);
       letter-spacing: -0.01em;
       line-height: 1.1;
       color: var(--title);
     }
 
     p {
-      margin: 0.6rem 0 0;
+      margin: 0.8rem 0 0;
       font-family: Georgia, "Times New Roman", Times, serif;
       font-size: clamp(1rem, 3.2vw, 1.15rem);
       line-height: 1.5;
       color: var(--sub);
-    }
-
-    img {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin: 0 0 2rem;
     }
 
     a {
@@ -64,15 +73,18 @@
     }
 
     a:hover, a:focus-visible { color: var(--title); }
+
+    /* Narrow or portrait screens: picture spans the full width */
+    @media (max-width: 700px), (max-aspect-ratio: 1/1) {
+      .art { width: 100vw; }
+    }
   </style>
 </head>
 <body>
+  <img class="art" src="/404-picture.webp" width="1773" height="998" alt="Painting of a man in uniform holding up three fingers to another man whose face is blank">
   <main>
-    <img src="/404-picture.webp" width="1280" height="720" alt="Painting of a man in uniform holding up three fingers to another man whose face is blank">
     <h1>Something went wrong</h1>
-    <p>
-      <a href="/">Return home</a>
-    </p>
+    <p><a href="/">Return home</a></p>
   </main>
 </body>
 </html>
