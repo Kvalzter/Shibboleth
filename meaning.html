@@ -40,6 +40,24 @@
     }
 
     p:first-of-type { margin-top: 0; }
+
+    .home {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.65em 1.3em;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: 1rem;
+      line-height: 1;
+      color: var(--title);
+      text-decoration: none;
+      border: 1px solid var(--title);
+      transition: background-color 0.15s, color 0.15s;
+    }
+
+    .home:hover, .home:focus-visible {
+      background: var(--title);
+      color: var(--bg);
+    }
   </style>
 </head>
 <body>
@@ -50,6 +68,7 @@
     <p>
       In the Book of Judges (12:5&ndash;6), the Gileadites asked fleeing Ephraimites to say the word. Their dialect had no &ldquo;sh&rdquo; sound, so they said <i>sibboleth</i> and were exposed. In the Second World War, the Dutch town name <i>Scheveningen</i> is said to have been used to tell native speakers from Germans, whose pronunciation gave them away.
     </p>
+    <a class="home" href="/">Return home</a>
   </main>
 </body>
 </html>
