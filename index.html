@@ -75,8 +75,35 @@
     h1 { animation: rise 1s ease-out both; }
     p  { animation: rise 1s ease-out 0.35s both; }
 
+    /* Footer links */
+    nav {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: clamp(24px, 5vh, 48px);
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      animation: rise 1s ease-out 0.7s both;
+    }
+
+    nav a {
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      color: var(--sub);
+      text-decoration: none;
+    }
+
+    nav a:hover, nav a:focus-visible {
+      color: var(--title);
+      text-decoration: underline;
+      text-underline-offset: 0.25em;
+      text-decoration-thickness: 1px;
+    }
+
     @media (prefers-reduced-motion: reduce) {
-      h1, p { animation: none; }
+      h1, p, nav { animation: none; }
     }
 
     /* Easter egg: looks like plain text until hovered or focused */
@@ -101,5 +128,9 @@
       from Hebrew <span lang="he">שִׁבֹּלֶת</span> (<i>shibbólet</i>), &ldquo;<a class="egg" href="/meaning">ear of grain</a>&rdquo;
     </p>
   </main>
+  <nav aria-label="Site">
+    <a href="/contact">Contact</a>
+    <a href="/publications">Publications</a>
+  </nav>
 </body>
 </html>
