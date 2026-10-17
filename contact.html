@@ -12,8 +12,8 @@
       --bg: #fafaf8;
       --title: #2b2b2b;
       --sub: #7a7a76;
-      /* Width of the painting: fills the window, but is capped on very wide screens */
-      --w: min(max(100vw, 150vh), 190vh);
+      /* Width of the painting: always fills the window (it is 3:2) */
+      --w: max(100vw, 150vh);
     }
 
     * { box-sizing: border-box; }
@@ -29,10 +29,11 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* The painting, edge to edge, anchored to the bottom */
+    /* The painting, edge to edge. On wide windows the extra height is cropped,
+       a quarter from the top and three quarters from the bottom, to keep the faces. */
     .stage {
       position: fixed;
-      bottom: 0;
+      top: calc((100vh - var(--w) / 1.5) * 0.25);
       left: 50%;
       transform: translateX(-50%);
       width: var(--w);
@@ -92,9 +93,11 @@
       color: var(--bg);
     }
 
-    /* Narrow or portrait screens: text on top, painting full width at the bottom */
-    @media (max-width: 700px), (max-aspect-ratio: 1/1) {
+    /* Portrait screens: text on top, painting full width at the bottom */
+    @media (max-aspect-ratio: 1/1) {
       .stage {
+        top: auto;
+        bottom: 0;
         left: 0;
         transform: none;
         width: 100vw;
@@ -110,6 +113,18 @@
 
       h1 { font-size: clamp(2rem, 8vw, 3.25rem); }
       p  { font-size: 1.05rem; max-width: 28rem; }
+    }
+
+    /* Short landscape screens (phones held sideways): a more compact text block */
+    @media (max-height: 520px) and (min-aspect-ratio: 1/1) {
+      .text { top: 41%; }
+      h1 { font-size: max(20px, calc(var(--w) * 0.027)); }
+      p  { font-size: max(12.5px, calc(var(--w) * 0.0118)); line-height: 1.4; }
+      .home {
+        margin-top: 1rem;
+        padding: 0.55em 1.1em;
+        font-size: 0.85rem;
+      }
     }
   </style>
 </head>
