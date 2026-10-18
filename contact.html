@@ -29,20 +29,20 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    main { max-width: 28rem; }
+    main { max-width: 32rem; }
 
     h1 {
       margin: 0;
       font-family: Georgia, "Times New Roman", Times, serif;
       font-weight: 700;
-      font-size: clamp(2.25rem, 8vw, 3.5rem);
+      font-size: clamp(2.75rem, 10vw, 5rem);
       letter-spacing: -0.01em;
       line-height: 1.1;
       color: var(--title);
     }
 
     p {
-      margin: 0.9rem 0 0;
+      margin: 0.8rem 0 0;
       font-family: Georgia, "Times New Roman", Times, serif;
       font-size: clamp(1rem, 3.2vw, 1.15rem);
       line-height: 1.5;
@@ -67,12 +67,26 @@
       background: var(--title);
       color: var(--bg);
     }
+
+    /* Gentle entrance, as on the home page */
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    h1    { animation: rise 1s ease-out both; }
+    p     { animation: rise 1s ease-out 0.35s both; }
+    .home { animation: rise 1s ease-out 0.7s both; }
+
+    @media (prefers-reduced-motion: reduce) {
+      h1, p, .home { animation: none; }
+    }
   </style>
 </head>
 <body>
   <main>
     <h1>Contact</h1>
-    <p>Thank you for your interest. We are not taking enquiries at this time.</p>
+    <p>Thank you for your interest. We aren&rsquo;t taking enquiries at the moment, but we&rsquo;re glad you stopped by.</p>
     <a class="home" href="/">Return home</a>
   </main>
 </body>
